@@ -1101,7 +1101,6 @@ body {
   background: url('../images/bg.png');
   background-size: cover;
   background-repeat:no-repeat;
-  padding-top:70px;
   height: 100%;
 }
 input,
@@ -6661,4 +6660,22 @@ ul.nav a:hover {
   color:#FF00AA;
   background:transparent;
   border-color: #FF00AA;
+}
+
+
+.carousel-inner .active.left { left: -33%; }
+.carousel-inner .next        { left:  33%; }
+.carousel-inner .prev        { left: -33%; }
+.carousel-control.left,.carousel-control.right {background-image:none;}
+
+#owl-example{
+  height:100%;
+}
+#owl-example .item{
+  height:100%;
+}
+#owl-example .item img{
+  display: block;
+  width: 100%;
+  height: auto;
 }
