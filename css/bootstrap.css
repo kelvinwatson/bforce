@@ -3448,8 +3448,7 @@ tbody.collapse.in {
   display: none;
   float: left;
   min-width: 160px;
-  padding: 5px 0;
-  margin: 2px 0 0;
+  padding-left: 0px !important;
   font-size: 14px;
   text-align: left;
   list-style: none;
@@ -3473,8 +3472,8 @@ tbody.collapse.in {
   background-color: #e5e5e5;
 }
 .dropdown-menu > li > a {
+  background-color: transparent;
   display: block;
-  padding: 3px 20px;
   clear: both;
   font-weight: normal;
   line-height: 1.42857143;
@@ -6612,6 +6611,7 @@ button.close {
   margin: 0;
   padding: 0;
   height: 500px;
+  width: 100%;
 }
 #map-canvas img {
   max-width: none;

@@ -135,9 +135,14 @@
   <script src="js/bootstrap.min.js"></script>
   <script language="javascript">
     $('.dropdown-toggle').dropdown();
-    $('.dropdown-menu').find('form').click(function (e) {
+    $('.dropdown-toggle').click(function (e) {
+        google.maps.event.trigger(map, 'resize');
+        setMapCenter();
         e.stopPropagation();
       });
+    $('.dropdown-menu').click(function (e) {
+        e.stopPropagation();
+    });
   </script> 
 
   <script src="https://maps.googleapis.com/maps/api/js"></script>
@@ -146,13 +151,24 @@
   function initialize() {
     var mapCanvas = document.getElementById('map-canvas');
     var mapOptions = {
-      center: new google.maps.LatLng(44.5403, -78.5463),
-      zoom: 8,
+      zoom: 11,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
-    map = new google.maps.Map(mapCanvas, mapOptions)
+    map = new google.maps.Map(mapCanvas, mapOptions);
   }
   google.maps.event.addDomListener(window, 'load', initialize);
+
+  function setMapCenter() {
+    // Try HTML5 geolocation
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = new google.maps.LatLng(position.coords.latitude,
+                                         position.coords.longitude);
+        map.setCenter(pos);
+      });
+    }
+  }
+
   </script>
 
   <script>
