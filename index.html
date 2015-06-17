@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BearForce</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>  
+    <link href='http://fonts.googleapis.com/css?family=Oxygen+Mono' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+    <nav class="navbar transparent navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <img id="logo" class="img-responsive" src="images/fadeLogo.png" width="300px" alt="bearforce logo">
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-map-marker"></span> Map<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><div id="map-canvas"></div></a></li>
+                  
+                </ul>
+              </li>
+            </ul>   
+        </div>
+      </div>
+    </nav>
+
+    <!--User Location-->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"> 
+          <p class="alert alert-success" role="alert"><span class="glyphicon glyphicon-globe"></span>  Events in Portland, OR<span class="pull-right" style="color:orange">Change City</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!--Carousel-->
+    <div class="container"> 
+      <div id="myCarousel" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="col-xs-4"><a href="#"><img class="img-responsive" src="images/SEA.jpg"></a></div>
+          </div>
+          <div class="item">
+            <div class="col-xs-4"><a href="#"><img class="img-responsive" src="images/DENVER.jpg"></a></div>
+          </div>
+          <div class="item">
+            <div class="col-xs-4"><a href="#"><img class="img-responsive" src="images/SF.jpg"></a></div>
+          </div>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p id="blueHeader" class="alert alert-success" role="alert"><span class="glyphicon glyphicon-glass"></span>  Ready to Have Some Fun?<span class="pull-right" style="color:orange"></span></p>
+        </div>
+        <div class="col-md-12">
+          <p>Fun bear events are happening in every city, every night of the week! Don't miss out. Check back every day for new events updated daily.</p>
+          <p>To view a full list of events in all cities, click <a href="full.html">here</a>.</p>
+      </div>
+    </div>
+
+    <!--Footer-->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-default navbar-fixed-bottom">
+        <div class="container">
+          <p class="navbar-text pull-left"><span class="glyphicon glyphicon-copyright-mark"></span> BearForce 2015</p>
+          <a class="navbar-btn btn btn-danger pull-right" href="#contact" data-toggle="modal">Need Help?</a>
+        </div>
+      </div>
+    </div>
+
+    <!--Modal-->
+    <div class="modal fade" id="contact" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form class="form-horizontal">
+            <div class="modal-header">
+              <h4>Contact BearForce</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="contact-name" class="col-lg-2 control-label">Name:</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" id="contact-name" placeholder="Full Name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contact-email" class="col-lg-2 control-label">Email:</label>
+                <div class="col-lg-10">
+                  <input type="email" class="form-control" id="contact-email" placeholder="you@example.com">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contact-msg" class="col-lg-2 control-label">Message:</label>
+                <div class="col-lg-10">
+                  <textarea class="form-control" rows="8"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a class="btn btn-default" data-dismiss="modal">Cancel</a>
+              <button class="btn btn-primary" type="submit">Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script language="javascript">
+    $('.dropdown-toggle').dropdown();
+    $('.dropdown-menu').find('form').click(function (e) {
+        e.stopPropagation();
+      });
+  </script> 
+
+  <script src="https://maps.googleapis.com/maps/api/js"></script>
+  <script>
+  var map;
+  function initialize() {
+    var mapCanvas = document.getElementById('map-canvas');
+    var mapOptions = {
+      center: new google.maps.LatLng(44.5403, -78.5463),
+      zoom: 8,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    map = new google.maps.Map(mapCanvas, mapOptions)
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+
+  <script>
+    $('#myCarousel').carousel({
+      interval: 10000
+    })
+
+    $('.carousel .item').each(function(){
+      var next = $(this).next();
+      if (!next.length) {
+        next = $(this).siblings(':first');
+      }
+      next.children(':first-child').clone().appendTo($(this));
+      
+      if (next.next().length>0) {
+        next.next().children(':first-child').clone().appendTo($(this));
+      }
+      else {
+        $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+      }
+    });
+
+
+  </script>
+  </body>
+</html>
