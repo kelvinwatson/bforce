@@ -6653,9 +6653,9 @@ ul.nav a:hover {
 }
 
 #blueHeader{
-  color:#2fcaed;
+  color:#2fdfed;
   background-color:transparent;
-  border-color:#2fcaed;
+  border-color:#2fdfed;
 }
 
 .btn-danger{
@@ -6680,6 +6680,7 @@ ul.nav a:hover {
   display: block;
   width: 100%;
   height: auto;
+  padding-right: 13px;
 }
 
 #content {
